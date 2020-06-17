@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+//ejemplo forEach
+var numbers=[1,2,3,4,4];
+var sum=0;
+function suma(number){
+    sum+=number;
+}
+numbers.forEach(suma);
+//helper forEach
+        var images = [
+  { height: 2, width: 30 },
+  { height: 20, width: 90 },
+  { height: 54, width: 32 }
+];
+var areas = [ ];
+
+images.forEach(function(image) {
+    var area = image.height*image.width;
+    document.write(`<button>${area}</button>`)
+   areas.push();
+});
+// helper map
+var numbers=[1,2,3];
+var doublenumbers=[];
+//una forma de hacerlo
+var doubled=numbers.map(function(number){
+    return number*2;})
+//otra forma de hacerlo
+numbers.map(function(number){
+    doublenumbers.push(number*2);
+})
+//otro ejemplo
+ var cars=[
+    {model:¨Buick¨, price:¨cheap¨};
+    {model:¨Camaro¨, price:¨expensive¨}
+ ];
+ var prices=cars.map(funtion(car){
+    return car.price})
+// ejercicio map
+var images = [
+  { height: '34px', width: '39px' },
+  { height: '54px', width: '19px' },
+  { height: '83px', width: '75px' },
+];
+var heights=images.map(function(image){
+    return image.height
+});
+//ejercicio map2
+var trips = [
+  { distance: 34, time: 10 },
+  { distance: 90, time: 50 },
+  { distance: 59, time: 25 }
+];
+function sp(trip){
+    return trip.distance/trip.time
+}
+var speeds=trips.map(sp)
+//ejercicio map 3
+var paints=[
+    {color:"red"},
+    {color:"blue"},
+    {color:"yellow"}
+    ]
+function colors(paint){
+    return paint["color"]
+}
+var valor=paints.map(colors)
+
+
+//ejercicio charly
+var personas=[{name:"pepe",age:30},
+            {name:"agus",age:34}
+            ];
+function pluck(valores,propiedad){
+    var resultado=valores.map(function(valor){
+        return valor[propiedad];
+    });
+    return resultado;
+}
+var result=pluck(personas,"name")
+
+//ejemplo filter
+products.filter(function(product){
+    return product.type === "vegetable"
+    && product.quantity>0
+    && product.price <10
+});
+//ejemplo filter con argumentos que son un objeto y un array
+//primer va a la linea 98
+//en esa funcion almacena lo q obtendra el filtro
+//la funcion almacena en comment los postid de comment q sean iguales al id de post
+function commentsForPost(post,coments){
+    return comments.filter(function(comment){
+        return comment.postId === post.id
+    })
+}
+commentsForPost(post,comments)
+//ejercicio filter
+var numbers = [15, 25, 35, 45, 55, 65, 75, 85, 95];
+
+var filteredNumbers=numbers.filter(function(number){
+    return number>50
+})
+//funcion reutilizable
+function fil(numbers){
+    return number>50
+}
+var filteredNumbers=numbers.filter(fil)
+//ejercicio 2 filter
+var users = [
+ { id: 1, admin: true },  
+ { id: 2, admin: false },
+ { id: 3, admin: false },
+ { id: 4, admin: false },
+ { id: 5, admin: true },
+];
+function a(user){
+    return user.admin === true
+  }
+var filteredUsers=users.filter(a)
+//== deben tener igual valor
+//=== iguala el valor y el tipo
+
+//ejemplo helper find
+var users=[
+    {name:alex},
+    {name:rob},
+    {name:juan}
+]
+function a(user){
+    return user.name === "alex"
+}
+var b=users.find(a)
+//ejemplo find 2
+
+var posts=[
+    {id:1,title:"new post"},
+    {id:2,title:"old post"}
+];
+var comment={postid:1,content:"great post"};
+
+function postForCom(posts,comment){
+    return posts.find(function(post){
+        return post.id === comment.postid;
+    })
+}
+
+postForCom(posts,comment);
+
+//ejmplo find 3
+function car(model){
+    this.model=model;
+}
+var cars=[
+    new car("buik"),
+    new car("laf"),
+    new car("skkc")
+];
+cars.find(function(car){
+    return car.model === buik
+})
+//helper every
+
+var computers=[
+    {name:"aple",ram:24},
+    {name:"dsef",ram:4},
+    {name:"dfga",ram:32}
+]
+
+var allComputersCanRunProgram=true;
+var onlySomeComputersCanRunProram=false;
+
+computers.every(function(computer){
+    return computer.ram > 16;
+})
+//si todas las ram son mayores de 16 entonces devuelve true
+//si al menos una devuelve falso entonces devuelve falso
+
+//helper some con el ejemplo anterior
+computers.some(function(computer){
+    return computer.ram >16;
+})
+
+
+//ejemplo for para sumar los numeros de un array
+var numbers=[10,20,30];
+var sum=0;
+
+for (var i=0;i < numbers.length; i++){
+    sum += numbers[i];
+}
+
+//mismo ejemplo con reduce
+
+numbers.reduce(function(sum,number){
+    return sum + number;
+},0);
+
+//ejemplo reduce
+var primaryColors=[
+    {color: "red"},
+    {color: "blue"},
+    {color: "yellow"}
+]
+
+primaryColors.reduce(function(previus,primaryColors){
+    previus.push(primaryColors.color);
+    return previus;
+},[ ])
+
+//ejemplo diferente de reduce
+
+function balancedParens(string){
+    return string.split("").reduce(function(previus,char){
+        if(char === "(") {return ++previus;}
+        if(char === ")") {return --previus;}
+        return previus;
+    },0)
+}
+
+balancedParens("(((((");
+
+
+var trips = [{ distance: 34 }, { distance: 12 } , { distance: 1 }];
+
+var totalDistance;
+
+function a(previus,trip){
+    return previus + trip.distance;
+};
+
+var totalDistance=trips.reduce(a,0);
+//ejercicio 2 reduce
+
+var desks = [
+  { type: 'sitting' },
+  { type: 'standing' },
+  { type: 'sitting' },
+  { type: 'sitting' },
+  { type: 'standing' }
+];
+
+var deskTypes = desks.reduce(function(previus,desk) {
+    if(desk.type === 'sitting'){previus.sitting++}
+    else{previus.standing++}
+    return previus;
+}, { sitting: 0, standing: 0 });
+//ejemplo arrow
+const add=function sum(a,b){
+    const suma=a+b
+    return suma
+    }
+const add=function sum(a,b){
+    return a+b
+    }
+const sum=(a,b)=> a+b;
+sum(2,3);
+//ejemplo reescribir codigo con arrow
+
+const numbers=[1,2,4,5];
+numbers.map(function(number){
+    return 2 * number;
+});
+
+//en anterior con arrow
+
+numbers.map(number => 2 * number);
+
+
+
+
+</script>
+
+
+
+</body>
+</html>
