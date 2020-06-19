@@ -273,6 +273,18 @@ numbers.map(function(number){
 //en anterior con arrow
 
 numbers.map(number => 2 * number);
+//ejemplo spread operator
+
+function shopList(...items){
+    if(items.indexOf("milk")<0){
+        return ["milk",...items];
+    }
+    return items;  
+}
+shopList("oranges","bread","eggs")
+
+
+
 
 
 
